@@ -1,5 +1,6 @@
 'use strict';
 
+//==============================================================================
 
 // 1 . Напишите функцию, которая принимает в качестве параметра год и месяц
 // выбранного года в виде числа, и возвращает массив объектов дат все выходный дней
@@ -9,54 +10,29 @@
 // getHolidays(2021 , 1 ) => [массив выходных за январь 2021 -го года]
 
 
-let getHolidays = (year, month) => {
-    Date.prototype.daysInMonth = function () {
-        return 33 - new Date(this.getFullYear(), this.getMonth(), 33).getDate();
-    };
-    month = month - 1;
-    let arr = [];
-    let maxDaysinMonth = new Date(year, month).daysInMonth();
-    let setValue = new Date(year, month);
-    for (let i = 0; i < maxDaysinMonth; i++) {
-        setValue.setDate(i + 1);
-        let indexDays = setValue.getDay();
-        if (indexDays === 0 || indexDays === 6) {
-            let getDateSetValue = setValue.getDate();
-            arr.push(new Date(year, month, getDateSetValue));
-        }
-    }
-    return arr;
-}
-
-console.log(getHolidays(2021, 10));
-
-
-
-
-
-
-
-
-// let getCurrenDate = () => {
-//     const currentDate = new Date();
-//     console.log(currentDate)
-//     const currendYear = currentDate.getFullYear();
-//     console.log(currendYear)
-//     const currendMonth = currentDate.getMonth();
-//     console.log(currendMonth)
-//     const currendDate = currentDate.getDate();
-//     console.log(currendDate)
-//     const weekDay = currentDate.getDay();
-//     console.log(weekDay)
-//     let day = ['ВСКР', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
-//     return `${currendDate}.${currendMonth + 1}.${currendYear} ${day[weekDay]}`
+// let getHolidays = (year, month) => {
+//     Date.prototype.daysInMonth = function () {
+//         return 33 - new Date(this.getFullYear(), this.getMonth(), 33).getDate();
+//     };
+//     month = month - 1;
+//     let arr = [];
+//     let maxDaysinMonth = new Date(year, month).daysInMonth();
+//     let setValue = new Date(year, month);
+//     for (let i = 0; i < maxDaysinMonth; i++) {
+//         setValue.setDate(i + 1);
+//         let indexDays = setValue.getDay();
+//         if (indexDays === 0 || indexDays === 6) {
+//             let getDateSetValue = setValue.getDate();
+//             arr.push(new Date(year, month, getDateSetValue));
+//         }
+//     }
+//     return arr;
 // }
 
-// console.log(getCurrenDate())
-
+// console.log(getHolidays(2021, 1));
+// console.log(getHolidays(2020, 4));
 
 //===========================================================================
-
 
 // 2. Напишите функцию, которая проводит следующие операции:
 // - принимает в параметры либо одиночный объект, либо массив объектов произвольной
@@ -70,6 +46,44 @@ console.log(getHolidays(2021, 10));
 
 
 
+// let setDisplayDate = function (value) {
+//     let arr = [];
+//     const currentDate = new Date();
+//     const getYear = currentDate.getFullYear();
+//     const getMonth = currentDate.getMonth();
+//     const getDate = currentDate.getDate();
+//     let typeOfDateString;
+//     if (getMonth > 0 && getMonth < 9) {
+//         typeOfDateString = `${getDate}.0${getMonth + 1}.${getYear}`;
+//         if (getDate > 0 && getDate < 10) {
+//             typeOfDateString = `0${getDate}.0${getMonth + 1}.${getYear}`;
+//         } else {
+//             typeOfDateString = `${getDate}.0${getMonth + 1}.${getYear}`;
+//         }
+//     } else {
+//         typeOfDateString = `${getDate}.${getMonth + 1}.${getYear}`;
+//         if (getDate > 0 && getDate < 10) {
+//             typeOfDateString = `0${getDate}.${getMonth + 1}.${getYear}`;
+//         } else {
+//             typeOfDateString = `${getDate}.${getMonth + 1}.${getYear}`;
+//         }
+//     }
+
+//     if (Array.isArray(value)) {
+//         for (let i = 0; i < value.length; i++) {
+//             value[i].displayDate = typeOfDateString;
+//             let obj = Object.assign({}, value[i]);
+//             arr.push(obj);
+//         }
+//         return arr;
+//     }
+//     if (typeof value === 'object') {
+//         value.displayDate = typeOfDateString;
+//         return value;
+//     }
+// }
+// console.log(setDisplayDate({}));
+// console.log(setDisplayDate([{}, {}, {}, {}, {}, {}, {}, {}, {}]));
 
 
 //===========================================================================
