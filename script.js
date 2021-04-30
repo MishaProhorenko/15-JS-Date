@@ -99,6 +99,51 @@
 
 
 
+let getTimeBeforeAnniversary = (year, month, date) => {
+    month = month - 1;
+    let arr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
 
+    let dateBorn = +new Date(year, month, date);
+    let currentDate = +new Date();
+
+    let result = Math.abs(currentDate - dateBorn);
+    let msInYear = result / 31536000000;
+    let msInDate = result / 86400000;
+    let yearNew;
+    for (let i = 0; i < arr.length; i++) {
+        if (Math.ceil((msInYear + 1) / 10) * 10 === arr[i]) {
+            yearNew = arr[i] - msInYear;
+        }
+    }
+    let a = msInYear + yearNew
+    let b = year + a
+    console.log(b)
+    console.log(a)
+    let c = +new Date(year, month, date).setYear(b)
+    console.log(c)
+    let n = Math.abs(c - dateBorn)
+    let p = n / 86400000;
+    console.log(p)
+    return `До юбилея осталось ${yearNew}`
+}
+console.log(getTimeBeforeAnniversary(1996, 3, 23));
+
+
+
+
+
+
+
+// let getDaysDifference = () => {
+//     let dateOne = +new Date(firstDate);
+//     let dateTwo = +new Date();
+//     let result = Math.abs(dateTwo - dateOne)
+
+//     let a = result / 86400000
+//     return a
+
+// }
+
+// console.log(getDaysDifference('2012-03-10', '2012-04-10'))
 
 //===========================================================================
